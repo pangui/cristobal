@@ -25,7 +25,7 @@ NEW_MD="${DIR}/${CREATED}-${NOW}-closed.md"
 mv "$OLD" "$NEW_MD"
 
 # Copy native Claude Code JSONL session log alongside, if found
-SESSIONS_DIR="${HOME}/.claude/projects/-home-cristobal-projects-cristobal"
+SESSIONS_DIR="${HOME}/.claude/projects/-home-cristobal-arquitecto"
 if [ -d "$SESSIONS_DIR" ]; then
   LATEST_JSONL=$(ls -t "${SESSIONS_DIR}"/*.jsonl 2>/dev/null | head -1)
   if [ -n "$LATEST_JSONL" ]; then
