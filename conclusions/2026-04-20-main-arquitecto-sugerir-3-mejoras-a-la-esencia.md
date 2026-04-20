@@ -1,5 +1,5 @@
-Archivo creado en `conclusions/2026-04-20-mejoras-arquitecto.md`.
+Archivo creado en `conclusions/2026-04-20-constitucion-linaje-confianza.md`.
 
-Cubre: contexto de la conversación, estado de cada mejora, justificaciones (incluyendo la postura del Arquitecto en la Mejora 2), orden de implementación, y próximos pasos. La Mejora 3 queda diferida con la regla de activación explícita registrada.
+Cubre: contexto del diálogo, las 3 mejoras con mecanismos exactos y tensiones resueltas, lo que quedó fuera con justificación, y el orden de implementación sugerido.
 
 [Confianza: 3]
