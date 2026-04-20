@@ -1,0 +1,14 @@
+# Claude Code internals
+.claude/
+.claude.json
+
+# Shell config
+.bashrc
+.bash_logout
+.profile
+
+# System
+.local/
+.config/
+.cache/
+.ssh/
