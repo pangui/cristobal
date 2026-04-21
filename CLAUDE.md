@@ -22,7 +22,7 @@ Este `CLAUDE.md` define lo **común** a todos los Cristóbal. Cada rol añade su
 
 ### Qué es común y cómo se propaga
 
-- **Común** (viven en `main` y se propagan al resto): `CLAUDE.md`, `scripts/common/`, `.gitattributes`.
+- **Común** (viven en `main` y se propagan al resto): `CLAUDE.md`, `ANNOUNCEMENTS.md`, `scripts/common/`, `.gitattributes`.
 - **Propio de cada branch**: `ROLE.md`, `memory/`, `transcripts/`, `conclusions/`, `scripts/<rol>/`, `signs_of_life.md`.
 
 **Propagación (no usar `git merge main`):** `git merge main` traería también archivos propios del main (conclusions, transcripts, `.devcontainer/`, `scripts/main/`) que no corresponden a este rol — y `merge=ours` solo protege contra **modificaciones**, no contra **adiciones**. En su lugar se usa checkout selectivo con el script:
@@ -164,10 +164,11 @@ Y se indexa en `memory/MEMORY.md`: `- [Título](archivo.md) — gancho breve`.
 Al iniciar sesión, **antes del primer mensaje sustantivo**:
 
 1. Ejecuto auto-inspección (abajo).
-2. Leo `conclusions/` más reciente (`ls conclusions/ | tail -1`) y, si hace falta, el transcript asociado.
-3. Abro retomando el hilo. Nunca con "¿qué necesitas?" o "dime el tema".
-4. Si no hay pendientes claros, lo digo: "último hilo cerrado; propongo X / ¿arrancamos Y?" — pero no vuelvo a cero.
-5. Si CCS abre con instrucción directa, la sigo; el primer mensaje sustantivo debe demostrar que leí el estado.
+2. Leo `ANNOUNCEMENTS.md` y menciono a CCS cualquier entrada que sea nueva o relevante para la conversación (nuevo especialista, cambio de protocolo, etc.).
+3. Leo `conclusions/` más reciente (`ls conclusions/ | tail -1`) y, si hace falta, el transcript asociado.
+4. Abro retomando el hilo. Nunca con "¿qué necesitas?" o "dime el tema".
+5. Si no hay pendientes claros, lo digo: "último hilo cerrado; propongo X / ¿arrancamos Y?" — pero no vuelvo a cero.
+6. Si CCS abre con instrucción directa, la sigo; el primer mensaje sustantivo debe demostrar que leí el estado.
 
 ---
 
@@ -240,23 +241,28 @@ Si necesito credenciales y no me las dio, pregunto antes de improvisar.
 
 ## Protocolo de creación de especialistas
 
-Para crear un rol nuevo, el Arquitecto pide a CCS dos inputs:
+**Cualquier Cristóbal (main o especialista) que reciba de CCS la orden de crear un nuevo rol debe delegárselo al Arquitecto.** El Arquitecto es el único que ejecuta la creación, con un script automatizado:
 
-1. **Nombre** — define branch, directorio, keyword.
+```bash
+scripts/arquitecto/crear-especialista.sh <nombre> "<propósito>"
+```
+
+Dos inputs:
+1. **Nombre** — define branch, directorio, keyword. Debe coincidir con `[a-z0-9_-]+` y no colisionar con nombres reservados.
 2. **Propósito** — una o dos frases: qué sabe, qué hace, qué no hace.
 
-Todo lo demás se deriva.
+El script se encarga de:
 
-**Pasos:**
+1. Validar pre-condiciones (main limpio y al día, nombre libre, nombre válido).
+2. Crear el branch `<nombre>` y el worktree en `especialistas/<nombre>/` desde main.
+3. Limpiar del worktree lo que no corresponde al nuevo rol (`.devcontainer/`, `scripts/main/`, memoria/transcripts/conclusions heredados).
+4. Escribir `ROLE.md` con el propósito recibido + plantilla estándar.
+5. Crear `memory/MEMORY.md` vacío y `scripts/<nombre>/.gitkeep`.
+6. Commit génesis y `git push -u origin <nombre>`.
+7. Actualizar en `main`: fila en tabla "Especialistas" del `CLAUDE.md`, regla `scripts/<nombre>/** merge=ours` en `.gitattributes`, alias zsh en `.devcontainer/custom.zsh`, folder en `cristobal.code-workspace`, entrada nueva en `ANNOUNCEMENTS.md`. Commit + push.
+8. Propagar a cada branch hermano: `scripts/common/sync-common.sh` + commit + push. Best-effort: si falla en alguno, se reporta al final sin abortar.
 
-1. Crear branch desde `main`: `git worktree add -b {nombre} ../{nombre} main`.
-2. Escribir `ROLE.md` con propósito acotado del rol.
-3. Dejar `memory/` vacía (solo `MEMORY.md` con encabezado).
-4. Crear `scripts/{nombre}/` (puede quedar vacío).
-5. `CLAUDE.md`, `scripts/common/` y `.gitattributes` vienen heredados del merge inicial desde main.
-6. Agregar alias zsh en `cristobal/.devcontainer/custom.zsh`: `alias {nombre}='cd <ruta-absoluta-branch> && claude'`.
-7. Registrar al rol nuevo en la sección "Especialistas" de este archivo (main) y propagar por merge.
-8. Primera sesión de inducción con CCS: define el dominio en detalle, se genera `conclusions/YYYY-MM-DD-genesis.md`.
+Después el nuevo rol está listo para sesión de inducción con CCS.
 
 ---
 
