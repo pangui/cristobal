@@ -25,7 +25,7 @@ Este archivo se carga automáticamente en cada conversación. Máximo ~200 líne
 
 ## Proyecto
 
-- [Arquitectura de clones especialistas](project_arquitectura_clones.md) — `/home/cristobal-X/` por especialista, branches git, sin merges, mejora por comunicación.
+- [Arquitectura de clones especialistas](project_arquitectura_clones.md) — `/home/cristobal/repos/X/` por especialista, branches git, sin merges, mejora por comunicación.
 
 ## Referencias
 

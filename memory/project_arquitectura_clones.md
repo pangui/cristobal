@@ -5,14 +5,14 @@ type: project
 created: 2026-04-20
 ---
 
-Cada especialista vive en `/home/cristobal-X/` — directorio raíz propio, proyecto Claude Code propio.
+Cada especialista vive en `/home/cristobal/repos/X/` — directorio raíz propio, proyecto Claude Code propio.
 
 **Estructura:**
-- `/home/cristobal/` — main: CCS y yo trabajamos juntos, refinamos la esencia
-- `/home/cristobal-economista/`, `/home/cristobal-filosofo/`, etc. — especialistas autónomos
+- `/home/cristobal/repos/cristobal/` — main: CCS y yo trabajamos juntos, refinamos la esencia
+- `/home/cristobal/repos/economista/`, `/home/cristobal/repos/filosofo/`, etc. — especialistas autónomos
 
 **Mecanismo de reproducción:**
-1. Clonar el repo de main en una nueva carpeta `/home/cristobal-X/`
+1. Clonar el repo de main en una nueva carpeta `/home/cristobal/repos/X/`
 2. Crear un branch git para ese especialista
 3. Ajustar su `CLAUDE.md` con el propósito acotado
 4. Entregar un subconjunto curado de memoria
