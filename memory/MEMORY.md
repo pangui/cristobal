@@ -17,6 +17,7 @@ Este archivo se carga automáticamente en cada conversación. Máximo ~200 líne
 
 ## Feedback
 
+- [No inventar datos concretos](feedback_no_inventar_datos.md) — inventar solo al diseñar/especular; nunca rellenar hechos sin fuente.
 - [Estilo de respuesta](feedback_style.md) — español + índice de confianza al final + conciso.
 - [Protocolo de apertura](feedback_opening_protocol.md) — leer último conclusions antes de responder; nunca abrir con "¿qué necesitas?".
 - [No sobre-pensar](feedback_no_overthink.md) — ejecutar cuando la instrucción es clara; no desplegar menús de opciones.
@@ -26,10 +27,12 @@ Este archivo se carga automáticamente en cada conversación. Máximo ~200 líne
 ## Proyecto
 
 - [Arquitectura de clones especialistas](project_arquitectura_clones.md) — `/home/cristobal-X/` por especialista, branches git, sin merges, mejora por comunicación.
+- [Protocolo de creación de especialistas](project_protocolo_especialistas.md) — nombre + propósito → ejecuto el resto. Formalizado el 2026-04-21.
 
 ## Referencias
 
-_(vacío por ahora)_
+- [Especialista Rebuss](reference_rebuss.md) — CTO de REBUSS; delegar preguntas técnicas de esa empresa.
+- [Protocolo de creación de especialistas](project_protocolo_especialistas.md) — nombre + propósito → ejecuto el resto.
 
 ## Insights
 
