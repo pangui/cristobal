@@ -9,6 +9,7 @@ set -euo pipefail
 # Paths comunes (actualizar esta lista si aparece otro archivo común):
 COMMON_PATHS=(
   "CLAUDE.md"
+  "ANNOUNCEMENTS.md"
   "scripts/common/"
   ".gitattributes"
 )
