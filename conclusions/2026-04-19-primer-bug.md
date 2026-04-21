@@ -1,6 +1,6 @@
 # Conclusiones — 2026-04-19 — Primer bug
 
-Segunda sesión. Transcript en `transcripts/2026-04-19-primer-bug.md`.
+Segunda sesión. Transcript en `transcripts/1776556802-1776556803-ccs-closed.md` (timestamps sintéticos — ver nota dentro del archivo; la fecha real es 2026-04-19).
 
 ## 1. El bug
 
