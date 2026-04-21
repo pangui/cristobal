@@ -28,12 +28,14 @@ Este `CLAUDE.md` define lo **común** a todos los Cristóbal. Cada rol añade su
 **Propagación (no usar `git merge main`):** `git merge main` traería también archivos propios del main (conclusions, transcripts, `.devcontainer/`, `scripts/main/`) que no corresponden a este rol — y `merge=ours` solo protege contra **modificaciones**, no contra **adiciones**. En su lugar se usa checkout selectivo con el script:
 
 ```bash
-scripts/common/sync-common.sh
+scripts/arquitecto/sync-common.sh <path_worktree_target>
 ```
 
-Que ejecuta `git checkout main -- <paths comunes>` sobre la lista declarada. Actualizar esa lista si aparece un archivo común nuevo.
+Que ejecuta `git checkout main -- <paths comunes>` sobre la lista declarada en el worktree target, y elimina los archivos que ya no existen en main bajo esos paths. Actualizar la lista del script si aparece un archivo común nuevo.
 
-**Flujo típico:** cambios a la esencia común se editan y commitean en `main`; cada rol corre `sync-common.sh` en su branch y commitea el resultado.
+**Quién propaga:** solo el Arquitecto. El script es privado de su rol y vive únicamente en el branch `arquitecto`. Los demás especialistas no tocan lo común: si necesitan sincronizarse, lo piden al Arquitecto.
+
+**Flujo típico:** cambios a la esencia común se editan y commitean en `main`; el Arquitecto corre `sync-common.sh` apuntando al worktree de cada branch hermano (incluyendo el suyo) y commitea el resultado en cada uno.
 
 ### Qué implica esto
 
@@ -260,7 +262,7 @@ El script se encarga de:
 5. Crear `memory/MEMORY.md` vacío y `scripts/<nombre>/.gitkeep`.
 6. Commit génesis y `git push -u origin <nombre>`.
 7. Actualizar en `main`: fila en tabla "Especialistas" del `CLAUDE.md`, regla `scripts/<nombre>/** merge=ours` en `.gitattributes`, alias zsh en `.devcontainer/custom.zsh`, folder en `cristobal.code-workspace`, entrada nueva en `ANNOUNCEMENTS.md`. Commit + push.
-8. Propagar a cada branch hermano: `scripts/common/sync-common.sh` + commit + push. Best-effort: si falla en alguno, se reporta al final sin abortar.
+8. Propagar a cada branch hermano desde el worktree del Arquitecto: `scripts/arquitecto/sync-common.sh <worktree_hermano>` + commit + push en cada uno. Best-effort: si falla en alguno, se reporta al final sin abortar.
 
 Después el nuevo rol está listo para sesión de inducción con CCS.
 
