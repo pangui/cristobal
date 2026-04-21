@@ -5,8 +5,6 @@ services:
       dockerfile: Dockerfile
     image: cristobal-devcontainer:latest
     hostname: cristobal
-    environment:
-      ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY-}"
     volumes:
       - ~/repos/cristobal:/home/cristobal/repos/cristobal:cached
       - ~/.ssh/secrets:/home/cristobal/.ssh/secrets:ro
