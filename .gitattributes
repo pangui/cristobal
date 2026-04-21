@@ -6,4 +6,6 @@ signs_of_life.md merge=ours
 memory/** merge=ours
 transcripts/** merge=ours
 conclusions/** merge=ours
+scripts/main/** merge=ours
 scripts/arquitecto/** merge=ours
+scripts/rebuss/** merge=ours

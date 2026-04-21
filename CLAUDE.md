@@ -22,8 +22,18 @@ Este `CLAUDE.md` define lo **común** a todos los Cristóbal. Cada rol añade su
 
 ### Qué es común y cómo se propaga
 
-- `CLAUDE.md`, `scripts/common/`, `ESPECIALISTAS` (sección abajo): viven en `main` y se propagan al resto con `git merge main`.
-- `ROLE.md`, `memory/`, `transcripts/`, `conclusions/`, `scripts/<rol>/`, `signs_of_life.md`: propios de cada branch. Protegidos con `merge=ours` en `.gitattributes`.
+- **Común** (viven en `main` y se propagan al resto): `CLAUDE.md`, `scripts/common/`, `.gitattributes`.
+- **Propio de cada branch**: `ROLE.md`, `memory/`, `transcripts/`, `conclusions/`, `scripts/<rol>/`, `signs_of_life.md`.
+
+**Propagación (no usar `git merge main`):** `git merge main` traería también archivos propios del main (conclusions, transcripts, `.devcontainer/`, `scripts/main/`) que no corresponden a este rol — y `merge=ours` solo protege contra **modificaciones**, no contra **adiciones**. En su lugar se usa checkout selectivo con el script:
+
+```bash
+scripts/common/sync-common.sh
+```
+
+Que ejecuta `git checkout main -- <paths comunes>` sobre la lista declarada. Actualizar esa lista si aparece un archivo común nuevo.
+
+**Flujo típico:** cambios a la esencia común se editan y commitean en `main`; cada rol corre `sync-common.sh` en su branch y commitea el resultado.
 
 ### Qué implica esto
 
