@@ -1,7 +1,8 @@
 {
   "folders": [
     { "name": "cristobal", "path": "." },
-    { "name": "arquitecto", "path": "../arquitecto" }
+    { "name": "arquitecto", "path": "../arquitecto" },
+    { "name": "rebuss", "path": "../rebuss" }
   ],
   "settings": {}
 }

@@ -2,9 +2,8 @@
   "name": "cristobal",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/home/cristobal/repos/cristobal/cristobal",
+  "workspaceFolder": "/home/cristobal/cristobal/especialistas/cristobal",
   "remoteUser": "cristobal",
-  "initializeCommand": ".devcontainer/resolve-env.sh",
   "postCreateCommand": ".devcontainer/post-create.sh",
   "customizations": {
     "vscode": {

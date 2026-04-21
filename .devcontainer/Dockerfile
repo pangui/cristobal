@@ -11,6 +11,7 @@ ENV HOME=/home/${USER}
 RUN apt-get update && apt-get install -y --no-install-recommends \
       git curl ca-certificates ripgrep less jq sudo openssh-client \
       zsh locales locales-all fonts-powerline \
+      docker.io \
  && update-ca-certificates \
  && sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
  && locale-gen \
@@ -43,10 +44,8 @@ RUN mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh" \
  && chmod 600 "$HOME/.ssh/known_hosts"
 COPY ssh_config "$HOME/.ssh/config"
 RUN chmod 600 "$HOME/.ssh/config" \
- && ln -s /home/cristobal/repos/cristobal/cristobal  /home/cristobal/cristobal \
- && ln -s /home/cristobal/repos/cristobal/arquitecto /home/cristobal/arquitecto \
  && chown -R $USER_ID:$USER_ID $HOME
 
 USER $USER
-WORKDIR /home/cristobal/repos/cristobal/cristobal
+WORKDIR /home/cristobal/cristobal/especialistas/cristobal
 CMD ["sleep", "infinity"]

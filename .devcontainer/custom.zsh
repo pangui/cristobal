@@ -1,6 +1,6 @@
 ZSH_THEME="agnoster"
 export PATH="$HOME/.local/bin:$PATH"
 
-alias cristobal='cd /home/cristobal/repos/cristobal/cristobal && claude'
-alias arquitecto='cd /home/cristobal/repos/cristobal/arquitecto && claude'
-alias rebuss='cd /home/cristobal/repos/cristobal/rebuss && claude'
+alias cristobal='cd ~/cristobal/especialistas/cristobal && claude'
+alias arquitecto='cd ~/cristobal/especialistas/arquitecto && claude'
+alias rebuss='cd ~/cristobal/especialistas/rebuss && claude'
