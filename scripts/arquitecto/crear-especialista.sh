@@ -16,7 +16,8 @@ set -euo pipefail
 #   5. Commit génesis + push -u origin <nombre>.
 #   6. Actualiza main (tabla Especialistas, .gitattributes, alias zsh,
 #      code-workspace, ANNOUNCEMENTS.md) + commit + push.
-#   7. Propaga a branches hermanos con sync-common.sh (best-effort).
+#   7. Propaga a branches hermanos con scripts/arquitecto/sync-common.sh
+#      apuntando a cada worktree hermano (best-effort).
 #   8. Reporte final.
 
 if [ $# -lt 2 ] || [ -z "${1:-}" ] || [ -z "${2:-}" ]; then
@@ -229,10 +230,10 @@ for dir in "$ESPECIALISTAS_DIR"/*/; do
 
   echo "==> Propagando a '${branch}'..."
   if ! (
-    cd "$dir"
-    if ! ./scripts/common/sync-common.sh; then
+    if ! "${SCRIPT_DIR}/sync-common.sh" "$dir"; then
       exit 1
     fi
+    cd "$dir"
     if ! git diff --quiet || ! git diff --cached --quiet; then
       git add -A
       git commit -m "Sincroniza común desde main (nuevo especialista: ${NOMBRE})"
