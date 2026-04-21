@@ -1,27 +1,33 @@
 ---
-name: Arquitectura de clones especialistas
-description: Cómo se reproducen instancias de Cristóbal para delegar preguntas complejas
-type: project
+name: Decisiones de diseño — arquitectura de roles
+description: Razonamiento detrás del modelo de branches y por qué no contenedores separados
+type: insight
 created: 2026-04-20
+updated: 2026-04-21
 ---
 
-Cada especialista vive en `/home/cristobal-X/` — directorio raíz propio, proyecto Claude Code propio.
+La arquitectura de Cristóbal usa **branches git del mismo repo** para desplegar roles. No contenedores separados, no cuentas distintas.
 
-**Estructura:**
-- `/home/cristobal/` — main: CCS y yo trabajamos juntos, refinamos la esencia
-- `/home/cristobal-economista/`, `/home/cristobal-filosofo/`, etc. — especialistas autónomos
+## Decisiones clave
 
-**Mecanismo de reproducción:**
-1. Clonar el repo de main en una nueva carpeta `/home/cristobal-X/`
-2. Crear un branch git para ese especialista
-3. Ajustar su `CLAUDE.md` con el propósito acotado
-4. Entregar un subconjunto curado de memoria
-5. El especialista acumula su propia memoria desde ahí
+**Branches, no contenedores.**
+La identidad vive en archivos. Montar infraestructura nueva (contenedor, VM, cuenta) por cada rol añade fricción sin beneficio de identidad — seguiría siendo el mismo modelo leyendo los mismos archivos.
 
-**Por qué no contenedor nuevo:** la identidad vive en archivos, no en infraestructura.
+**Sin merges clásicos entre roles hermanos.**
+`arquitecto` y `rebuss` no se fusionan entre sí. La red de Cristóbals mejora por *comunicación* (transcripts + conclusions que cada uno guarda), no por merge de memoria.
 
-**Sin merges clásicos:** la red mejora por comunicación, no por merge. Nosotros curaremos la calidad del main; los especialistas crecen autónomamente en sus branches.
+**`main` como fuente de lo común.**
+`CLAUDE.md`, `scripts/common/`, `.gitattributes` viven en main y se propagan hacia cada branch con `git merge main`. El contenido propio de cada branch (`ROLE.md`, `memory/`, `transcripts/`, `conclusions/`, `scripts/<rol>/`) lleva `merge=ours` para no ser sobrescrito.
 
-**Why:** Para delegar preguntas complejas y paralelizar. CCS hará preguntas que requieren expertise profundo; yo orchestraré hacia el especialista correcto.
+**Memoria propia desde cero.**
+Un rol nuevo nace con `memory/` vacía. No hereda memoria del main ni de otros roles. La esencia común está en `CLAUDE.md` (vía merge); la memoria es acumulación propia del rol.
 
-**How to apply:** Cuando CCS pida crear un especialista, seguir este flujo. Cuando una pregunta supere mi profundidad en un dominio, delegar al especialista correspondiente.
+## Por qué importa
+
+Cuando CCS pida modificar la arquitectura, estas son las invariantes que el Arquitecto defiende (o cuestiona con argumentos):
+- Identidad como archivos, no como infraestructura.
+- Propagación de lo común solo desde main.
+- Aislamiento de memoria por branch.
+- Comunicación entre roles por transcripts, no por merge.
+
+**How to apply:** al evaluar propuestas de cambio arquitectónico, contrastar contra estas cuatro invariantes. Si una propuesta las viola, el Arquitecto explica el costo antes de aceptar.

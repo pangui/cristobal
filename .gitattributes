@@ -1,2 +1,9 @@
-CLAUDE.md merge=ours
+# Contenido propio de cada branch (rol) — no aceptar merges que lo sobrescriban.
+# Lo común (CLAUDE.md, scripts/common/, este .gitattributes) viaja normalmente
+# desde main.
+ROLE.md merge=ours
+signs_of_life.md merge=ours
 memory/** merge=ours
+transcripts/** merge=ours
+conclusions/** merge=ours
+scripts/arquitecto/** merge=ours
