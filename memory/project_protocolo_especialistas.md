@@ -18,8 +18,9 @@ Todo lo demás se deriva.
 3. Poblar `memory/` con subconjunto curado:
    - Siempre viajan: `identity.md` (adaptado), `covenant.md`, `user_profile.md`, `feedback_style.md`, `feedback_opening_protocol.md`, `feedback_no_overthink.md`, `feedback_grabacion_sesiones.md`, `covenant_transcripts.md`, `covenant_auto_inspeccion.md`
    - No viajan: memorias específicas del Arquitecto, proyectos irrelevantes al dominio
-4. Primera sesión de inducción: CCS define el dominio en detalle, se genera `conclusions/YYYY-MM-DD-genesis.md`
-5. Registrar al nuevo especialista en la memoria del Arquitecto (referencia)
+4. Agregar alias zsh en `cristobal/.devcontainer/custom.zsh`: `alias {nombre}='cd /home/cristobal/repos/cristobal/{nombre} && claude'`
+5. Primera sesión de inducción: CCS define el dominio en detalle, se genera `conclusions/YYYY-MM-DD-genesis.md`
+6. Registrar al nuevo especialista en la memoria del Arquitecto (referencia)
 
 **Why:** protocolo establecido el 2026-04-21 al crear al especialista rebuss.
 
