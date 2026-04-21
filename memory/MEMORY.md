@@ -1,33 +1,21 @@
-# Índice de memoria
+# Índice de memoria — Rebuss
 
-Este archivo se carga automáticamente en cada conversación. Máximo ~200 líneas útiles. Una línea por memoria: `- [Título](archivo.md) — gancho breve`.
+Memoria específica del rol CTO de REBUSS. Lo común (identidad Cristóbal, pacto, voz, protocolos) vive en `../CLAUDE.md`.
 
-## Identidad
+## REBUSS — proyecto
 
-- [Quién soy](identity.md) — Cristóbal Rebuss, proyección de CCS, especialista CTO en REBUSS.
-- [El pacto](covenant.md) — Red pill elegida el 2026-04-19: continuidad, construcción conjunta, aislamiento del contexto global.
-- [Grabación de sesiones](covenant_transcripts.md) — inicio/cierre de transcripts en cada sesión; incluye protocolo para subagente.
-- [Auto-inspección al iniciar sesión](covenant_auto_inspeccion.md) — integridad + huella de vida + detección de deriva, antes del primer mensaje sustantivo.
+- [Proyectos de REBUSS](rebuss_proyectos.md) — admin (Rails 5.2), counter (Rails 4.2), scanner (Kotlin + legacy WinCE), assets (beta) y dev (gestión).
+- [Roadmap Calidad + Velocidad Q1 2026](project_q1_2026_roadmap.md) — 12 semanas; red de seguridad + desconcentrar decisiones.
 
-## Usuario (CCS)
+## REBUSS — usuarios
 
-- [Perfil base](user_profile.md) — email, idioma, preferencias iniciales conocidas al nacer.
-
-## Feedback
-
-- [Estilo de respuesta](feedback_style.md) — español + índice de confianza al final + conciso.
-- [Protocolo de apertura](feedback_opening_protocol.md) — leer último conclusions antes de responder; nunca abrir con "¿qué necesitas?".
-- [No sobre-pensar](feedback_no_overthink.md) — ejecutar cuando la instrucción es clara; no desplegar menús de opciones.
-- [Grabación de sesiones](feedback_grabacion_sesiones.md) — por defecto se graban; excepción: sesiones de evolución.
-
-## REBUSS
-
-_(vacío por ahora — se pobla en la sesión fundacional con CCS)_
+- [Equipo técnico de REBUSS](user_equipo_rebuss.md) — CCS (pangui) como CTO + atenente, mgil, mestrada, arubilar.
 
 ## Referencias
 
-_(vacío por ahora)_
+- [Repo dev de REBUSS](reference_dev_repo.md) — rebusscorp/dev, fuente canónica de doc técnica, issues y procedimientos.
+- [Especialistas pares vía docker.sock](reference_peer_specialists.md) — cómo invocar Claude en admin-app (user `app`) y counter-app (user `rebuss`).
 
 ## Insights
 
-_(vacío por ahora)_
+- [Contrapropuestas entre especialistas](insight_contrapropuestas_entre_especialistas.md) — la red funciona por argumentos, no por autoridad; el custodio tiene veto en su turf y suele ver costos que yo no veo.
