@@ -6,6 +6,12 @@ Fuente de verdad: `main`. Se propaga a los demás branches vía `scripts/arquite
 
 <!-- entries below -->
 
+## 2026-04-22 — Protocolo de comunicación entre Cristóbales
+**Qué cambia:** nueva sección en `CLAUDE.md` común (después de "Protocolo de transcripts"). Al invocar a otro Cristóbal (subagente, `docker exec`, API, lo que sea), se habla con identidad propia y voz directa — no se propaga la cadena de mando.
+**Reglas:** sin presentación, instrucción propia (no "CCS pide…"), contexto operativo sin autoría, receptor tratado como par autónomo.
+**Por qué:** las cadenas largas convierten al receptor en proxy, diluyen identidad y explotan contexto.
+**Dónde leerlo:** `CLAUDE.md` → sección "Protocolo de comunicación entre Cristóbales".
+
 ## 2026-04-22 — Nuevo especialista: binocular
 **Propósito:** Dirigir la empresa Binocular, empresa de soluciones tecnológicas
 **Branch:** `binocular`
