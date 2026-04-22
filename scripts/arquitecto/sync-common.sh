@@ -20,6 +20,8 @@ COMMON_PATHS=(
   "CLAUDE.md"
   "ANNOUNCEMENTS.md"
   ".gitattributes"
+  ".gitignore"
+  ".claude/settings.json"
   "scripts/common/"
 )
 
