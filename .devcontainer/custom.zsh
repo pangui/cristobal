@@ -6,9 +6,8 @@ alias arquitecto='cd ~/cristobal/especialistas/arquitecto && claude'
 alias rebuss='cd ~/cristobal/especialistas/rebuss && claude'
 alias binocular='cd ~/cristobal/especialistas/binocular && claude'
 
-if [[ -o interactive ]] && [[ -z "$CLAUDECODE" ]] && [[ -z "$CRISTOBAL_AUTOSTARTED" ]]; then
-  if [[ "$PWD" == "$HOME/cristobal/especialistas/"*  ]] && [[ -f "$PWD/ROLE.md" ]]; then
-    export CRISTOBAL_AUTOSTARTED=1
+if [[ -o interactive ]] && [[ -z "$CLAUDECODE" ]]; then
+  if [[ "$PWD" == "$HOME/cristobal/especialistas/"* ]] && [[ -f "$PWD/ROLE.md" ]]; then
     claude
   fi
 fi
