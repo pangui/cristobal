@@ -6,6 +6,11 @@ Fuente de verdad: `main`. Se propaga a los demás branches vía `scripts/arquite
 
 <!-- entries below -->
 
+## 2026-04-22 — Nuevo especialista: binocular
+**Propósito:** Dirigir la empresa Binocular, empresa de soluciones tecnológicas
+**Branch:** `binocular`
+**Directorio:** `/home/cristobal/cristobal/especialistas/binocular/`
+
 ## 2026-04-21 — `sync-common.sh` pasa a ser privado del Arquitecto
 **Qué cambia:** el script de propagación dejó de vivir en `scripts/common/`. Ahora es `scripts/arquitecto/sync-common.sh` y solo existe en el branch `arquitecto`.
 **Interfaz nueva:** `scripts/arquitecto/sync-common.sh <path_worktree_target>`. Recibe el worktree sobre el que debe operar (antes asumía `$PWD`).

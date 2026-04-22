@@ -9,3 +9,4 @@ conclusions/** merge=ours
 scripts/main/** merge=ours
 scripts/arquitecto/** merge=ours
 scripts/rebuss/** merge=ours
+scripts/binocular/** merge=ours
