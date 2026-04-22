@@ -14,3 +14,6 @@
 .config/
 .cache/
 .ssh/
+
+# Transcripts en curso — solo los cerrados se versionan
+transcripts/*-running.md
