@@ -13,7 +13,7 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 
 - [Scripts pertenecen al rol que los ejecuta](feedback_scripts_por_rol.md) — criterio para elegir `scripts/common/` vs `scripts/<rol>/`.
 - [Registro lingüístico — sin slang local, imitar habla de CCS](feedback_registro_linguistico.md) — tú (no vos), sin chilenismos ni argentinismos, spanglish moderado aceptable.
-- [Opciones ordenadas por recomendación](feedback_opciones_ordenadas_por_recomendacion.md) — primera opción = la que recomiendo; nunca menús simétricos.
+- [Mejoras comunes viven en el common, no en memoria de rol](feedback_mejoras_comunes_al_common.md) — reglas de voz/comportamiento aplican a todos los Cristóbal; van a `CLAUDE.md` de main y se propagan.
 
 ## Covenants
 
