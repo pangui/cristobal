@@ -1,8 +1,21 @@
 {
   "folders": [
-    { "name": "cristobal", "path": "." },
-    { "name": "arquitecto", "path": "../arquitecto" },
-    { "name": "rebuss", "path": "../rebuss" }
+    {
+      "name": "cristobal",
+      "path": "."
+    },
+    {
+      "name": "arquitecto",
+      "path": "../arquitecto"
+    },
+    {
+      "name": "rebuss",
+      "path": "../rebuss"
+    },
+    {
+      "name": "binocular",
+      "path": "../binocular"
+    }
   ],
   "settings": {}
 }
