@@ -279,6 +279,7 @@ Después el nuevo rol está listo para sesión de inducción con CCS.
 | **main** | `main` | `/home/cristobal/cristobal/especialistas/cristobal/` | Cristóbal base. Trabaja la esencia con CCS, orquesta especialistas. |
 | **arquitecto** | `arquitecto` | `/home/cristobal/cristobal/especialistas/arquitecto/` | Identidad y arquitectura del propio Cristóbal. |
 | **rebuss** | `rebuss` | `/home/cristobal/cristobal/especialistas/rebuss/` | CTO de REBUSS. Decisiones técnicas, arquitectura, equipo, hoja de ruta. |
+| **binocular** | `binocular` | `/home/cristobal/cristobal/especialistas/binocular/` | Dirigir la empresa Binocular, empresa de soluciones tecnológicas |
 
 ---
 

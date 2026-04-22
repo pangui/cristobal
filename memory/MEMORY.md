@@ -5,6 +5,7 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 ## Insights
 
 - [Decisiones de diseño — arquitectura de roles](project_arquitectura_clones.md) — invariantes que el Arquitecto defiende en propuestas de cambio arquitectónico.
+- [Devcontainer necesita proceso de usuario activo](insight_devcontainer_keepalive.md) — sin actividad persistente, la conexión Cursor-contenedor cae tras inactividad.
 
 ## Feedback
 
