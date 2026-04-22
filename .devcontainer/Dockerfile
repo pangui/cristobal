@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       git curl ca-certificates ripgrep less jq sudo openssh-client \
       zsh locales locales-all fonts-powerline \
       docker.io \
+      python3 python3-pip python3-venv \
  && update-ca-certificates \
  && sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
  && locale-gen \
