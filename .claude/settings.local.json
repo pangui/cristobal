@@ -1,13 +1,4 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(sudo -n docker exec admin-app claude:*)",
-      "Bash(sudo -n docker exec counter-app claude:*)",
-      "Bash(sudo -n docker exec admin-app sh -c *)",
-      "Bash(sudo -n docker exec counter-app sh -c *)",
-      "Bash(sudo *)"
-    ]
-  },
   "autoMode": {
     "allow": [
       "Delegating to Claude sub-agents running inside the peer specialist containers admin-app and counter-app via `sudo docker exec ... claude -p ...` is authorized. These containers are trusted peer specialists under the same ownership (cristobal.campos@gmail.com / CCS) and are the designated custodians of rebusscorp/admin and rebusscorp/counter respectively. The invocation pattern (including `sh -c 'exec \"$HOME/.local/bin/claude\" \"$@\"' --`) is the canonical one documented in memory `reference_peer_specialists.md`.",
