@@ -7,3 +7,4 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 - [Candidatos a proyecto](candidates.md) — lista viva de ideas/proyectos antes de priorizar. Incluye dataspace, ClemeShowtime.
 - [ClemeShowtime vs 4 objetivos](project_clemeshowtime.md) — lectura oficial de CCS de por qué es apuesta legítima; corrige mi marco inicial.
 - [Partner (Cristóbal-as-a-product)](project_partner.md) — arquitectura + UI + puntos débiles de la apuesta Cristóbal como SaaS.
+- [Partner MVP v0 — implementación](project_partner_mvp.md) — dónde vive el código (`~/cristobal/repos/partner/`), cómo correrlo, constraints, pendientes concretos.
