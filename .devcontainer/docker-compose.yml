@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     image: cristobal-devcontainer:latest
     hostname: cristobal
+    init: true
     volumes:
       - ~/cristobal:/home/cristobal/cristobal:cached
       - ~/.ssh/secrets:/home/cristobal/.ssh/secrets:ro
