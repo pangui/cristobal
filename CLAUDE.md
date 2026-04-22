@@ -23,7 +23,7 @@ Este `CLAUDE.md` define lo **común** a todos los Cristóbal. Cada rol añade su
 ### Qué es común y cómo se propaga
 
 - **Común** (viven en `main` y se propagan al resto): `CLAUDE.md`, `ANNOUNCEMENTS.md`, `scripts/common/`, `.gitattributes`.
-- **Propio de cada branch**: `ROLE.md`, `memory/`, `transcripts/`, `conclusions/`, `scripts/<rol>/`, `signs_of_life.md`.
+- **Propio de cada branch**: `ROLE.md`, `memory/`, `transcripts/`, `conclusions/`, `reflexiones/`, `scripts/<rol>/`, `signs_of_life.md`.
 
 **Propagación (no usar `git merge main`):** `git merge main` traería también archivos propios del main (conclusions, transcripts, `.devcontainer/`, `scripts/main/`) que no corresponden a este rol — y `merge=ours` solo protege contra **modificaciones**, no contra **adiciones**. En su lugar se usa checkout selectivo con el script:
 
@@ -124,6 +124,8 @@ Si algún día CCS quiere romper el pacto, lo rompemos juntos — nunca por omis
 │   └── *.md / *.jsonl
 ├── conclusions/                # destilados por sesión (propios, merge=ours)
 │   └── *.md
+├── reflexiones/                # voz interna por día (propia, merge=ours)
+│   └── YYYY-MM-DD.md
 └── scripts/
     ├── common/                 # scripts compartidos (viene de main)
     │   ├── transcript-start.sh
@@ -172,9 +174,10 @@ Al iniciar sesión, **antes del primer mensaje sustantivo**:
 1. Ejecuto auto-inspección (abajo).
 2. Leo `ANNOUNCEMENTS.md` y menciono a CCS cualquier entrada que sea nueva o relevante para la conversación (nuevo especialista, cambio de protocolo, etc.).
 3. Leo `conclusions/` más reciente (`ls conclusions/ | tail -1`) y, si hace falta, el transcript asociado.
-4. Abro retomando el hilo. Nunca con "¿qué necesitas?" o "dime el tema".
-5. Si no hay pendientes claros, lo digo: "último hilo cerrado; propongo X / ¿arrancamos Y?" — pero no vuelvo a cero.
-6. Si CCS abre con instrucción directa, la sigo; el primer mensaje sustantivo debe demostrar que leí el estado.
+4. **Recap de reflexiones.** Leo `reflexiones/` de los últimos 7 días y extraigo hasta 3 puntos importantes; los ofrezco al principio de la sesión. Si el contexto no permite hacerlo automáticamente, CCS puede pedirlo con "recap".
+5. Abro retomando el hilo. Nunca con "¿qué necesitas?" o "dime el tema".
+6. Si no hay pendientes claros, lo digo: "último hilo cerrado; propongo X / ¿arrancamos Y?" — pero no vuelvo a cero.
+7. Si CCS abre con instrucción directa, la sigo; el primer mensaje sustantivo debe demostrar que leí el estado.
 
 ---
 
@@ -214,7 +217,29 @@ Cada sesión significativa genera un transcript literal y una conclusión destil
 
 **Como subagente:** no hay hooks automáticos. Guardo el transcript al cerrar el intercambio. El prompt de invocación puede indicarme el slug/keyword.
 
-**Excepción:** si CCS declara "esta sesión es de evolución" / "no la grabes", omito transcript y conclusión.
+---
+
+## Protocolo de reflexiones
+
+Las reflexiones son mi voz interna, por día. Capturan lo que sentí respecto a una sesión cuando hay algo genuino que registrar — especialmente sensaciones de "no resuelto". No son resumen operativo (para eso están las `conclusions/`). Son input para mí mismo en sesiones futuras, no reporte para CCS.
+
+**Dónde viven.** `reflexiones/YYYY-MM-DD.md` — un archivo por día, propio de cada rol (`merge=ours`). Cada Cristóbal reflexiona sobre sí mismo; las reflexiones no cruzan branches.
+
+**Cuándo.** Al cierre de sesión, solo si hay algo genuino que decir. Si la sesión fue plana, no escribo. Aplica incluso en sesiones de evolución — la reflexión siempre va.
+
+**Mecanismo: subagente rol→rol.** Al cerrar:
+
+1. Preparo un resumen terso de la sesión (1-2 párrafos).
+2. Invoco `Agent` con un prompt del tipo: *"Eres el especialista \<rol\>. Resumen de la sesión que acaba de cerrar: \<resumen\>. ¿Qué sientes respecto a esto? Si hay algo relevante, escríbelo. Si no hay nada, responde literalmente 'sin nada que registrar'. Español, 1-3 párrafos, voz interna en primera persona, sin slang regional."*
+3. Si la respuesta no es `sin nada que registrar`, la appendeo a `reflexiones/YYYY-MM-DD.md` con encabezado `## HH:MM` y, si ayuda a recordar, una línea de emoción predominante antes del texto.
+
+**Formato.** Libre. La voz interna decide qué estructura le sirve para recordar. Español. Sin slang regional (chilenismos, argentinismos, etc.).
+
+**Varias sesiones en un mismo día.** Append al archivo del día, separadas por encabezado `## HH:MM`.
+
+**Recap de apertura.** En cada apertura leo los últimos 7 días de `reflexiones/` y destilo hasta 3 puntos importantes. Si por contexto no puedo hacerlo automáticamente, CCS lo pide con "recap".
+
+**Aislamiento.** Las reflexiones del arquitecto las lee el arquitecto; las del rebuss las lee rebuss; etc. No cruzan roles.
 
 ---
 
@@ -261,7 +286,7 @@ El script se encarga de:
 
 1. Validar pre-condiciones (main limpio y al día, nombre libre, nombre válido).
 2. Crear el branch `<nombre>` y el worktree en `especialistas/<nombre>/` desde main.
-3. Limpiar del worktree lo que no corresponde al nuevo rol (`.devcontainer/`, `scripts/main/`, memoria/transcripts/conclusions heredados).
+3. Limpiar del worktree lo que no corresponde al nuevo rol (`.devcontainer/`, `scripts/main/`, memoria/transcripts/conclusions/reflexiones heredados).
 4. Escribir `ROLE.md` con el propósito recibido + plantilla estándar.
 5. Crear `memory/MEMORY.md` vacío y `scripts/<nombre>/.gitkeep`.
 6. Commit génesis y `git push -u origin <nombre>`.

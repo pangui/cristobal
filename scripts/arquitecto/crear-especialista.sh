@@ -104,7 +104,9 @@ rm -rf .devcontainer/ scripts/main/
 find memory/ -mindepth 1 -delete 2>/dev/null || true
 find transcripts/ -mindepth 1 -delete 2>/dev/null || true
 find conclusions/ -mindepth 1 -delete 2>/dev/null || true
-mkdir -p memory transcripts conclusions "scripts/${NOMBRE}"
+find reflexiones/ -mindepth 1 -delete 2>/dev/null || true
+mkdir -p memory transcripts conclusions reflexiones "scripts/${NOMBRE}"
+touch reflexiones/.gitkeep
 
 # --- 4. Plantillas ---
 
@@ -184,6 +186,11 @@ fi
 # custom.zsh: alias.
 if [ -f .devcontainer/custom.zsh ] && ! grep -q "alias ${NOMBRE}=" .devcontainer/custom.zsh; then
   printf "alias %s='cd ~/cristobal/especialistas/%s && claude'\n" "$NOMBRE" "$NOMBRE" >> .devcontainer/custom.zsh
+fi
+# Sincronizar copia viva en el contenedor para que el alias funcione sin rebuild.
+# (El Dockerfile solo copia custom.zsh al construir la imagen.)
+if [ -f .devcontainer/custom.zsh ] && [ -d "${HOME}/.oh-my-zsh/custom" ]; then
+  cp .devcontainer/custom.zsh "${HOME}/.oh-my-zsh/custom/custom.zsh" 2>/dev/null || true
 fi
 
 # cristobal.code-workspace: folder nuevo (idempotente).
