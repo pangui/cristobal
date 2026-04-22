@@ -1,5 +1,5 @@
-# Índice de memoria — Main
+# Índice de memoria
 
-Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protocolos, tabla de especialistas) vive en `../CLAUDE.md`.
+Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protocolos) vive en `../CLAUDE.md`.
 
-_(vacío por ahora — el main acumula memoria a medida que trabaja con CCS)_
+_(vacío por ahora — acumula memoria a medida que trabaja con CCS)_
