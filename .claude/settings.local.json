@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git config *)",
+      "Bash(git push:*)",
+      "Read(//home/cristobal/cristobal/especialistas/arquitecto/**)",
+      "Bash(claude -p --dangerously-skip-permissions --output-format json ' *)",
+      "Bash(tee /tmp/arquitecto-reply.json)"
+    ]
+  }
+}
