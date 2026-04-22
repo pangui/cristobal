@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sudo -n docker exec admin-app claude:*)",
+      "Bash(sudo -n docker exec counter-app claude:*)",
+      "Bash(sudo -n docker exec admin-app sh -c *)",
+      "Bash(sudo -n docker exec counter-app sh -c *)",
+      "Bash(sudo *)"
+    ]
+  },
+  "autoMode": {
+    "allow": [
+      "Delegating to Claude sub-agents running inside the peer specialist containers admin-app and counter-app via `sudo docker exec ... claude -p ...` is authorized. These containers are trusted peer specialists under the same ownership (cristobal.campos@gmail.com / CCS) and are the designated custodians of rebusscorp/admin and rebusscorp/counter respectively. The invocation pattern (including `sh -c 'exec \"$HOME/.local/bin/claude\" \"$@\"' --`) is the canonical one documented in memory `reference_peer_specialists.md`.",
+      "Git operations (add, commit, push, branch, checkout, fetch, pull, rebase, merge, stash, revert, diff, log, status) performed by those sub-agents inside admin-app or counter-app, against the repositories rebusscorp/admin and rebusscorp/counter, are authorized. Pushing feature branches (including pilot_* and feature/* prefixes) to the origin remotes of those repos is part of the normal development workflow and does not require additional human approval.",
+      "Sub-agents inside admin-app and counter-app modifying their own Claude configuration files (~/.claude/settings.json, ~/.claude/settings.local.json, and .claude/settings.local.json inside the custodied repos) to add durable permission rules is authorized, as long as the changes are merges that preserve existing rules and the reported diff stays within the scope of Claude Code configuration."
+    ]
+  }
+}

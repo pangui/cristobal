@@ -1,6 +1,7 @@
 # Claude Code internals
 .claude/*
 !.claude/settings.json
+!.claude/settings.local.json
 .claude.json
 
 # Shell config
