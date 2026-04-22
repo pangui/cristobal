@@ -65,9 +65,14 @@ else
 fi
 
 FILE="${DIR}/${NOW}-${NOW}-${KEYWORD}-running.md"
+# Atomic create; if two starts land in the same second, bump NOW until the
+# name is unique. Prevents one session from clobbering another's running file.
+while ! (set -o noclobber; : > "$FILE") 2>/dev/null; do
+  NOW=$((NOW+1))
+  FILE="${DIR}/${NOW}-${NOW}-${KEYWORD}-running.md"
+done
+
 if [ -n "$SID" ]; then
   printf 'session_id: %s\n' "$SID" > "$FILE"
-else
-  : > "$FILE"
 fi
 echo "$NOW"
