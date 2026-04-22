@@ -8,6 +8,7 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 - [Devcontainer necesita proceso de usuario activo](insight_devcontainer_keepalive.md) — sin actividad persistente, la conexión Cursor-contenedor cae tras inactividad.
 - [Gap en crear-especialista.sh: alias zsh no vive en runtime](gap_crear_especialista_custom_zsh.md) — modifica el repo pero no la copia activa en `~/.oh-my-zsh/custom/`.
 - [Cristóbal a Cristóbal no es proxy](insight_cristobal_a_cristobal_no_proxy.md) — al invocar a otro especialista, instrucción con identidad propia; la cadena de mando no se propaga.
+- [Cursor server propaga env vars exportadas a terminales nuevos](insight_export_propagacion_cursor_server.md) — no usar `export` para guards de autostart; la var queda atrapada en procesos largo-vivos.
 
 ## Feedback
 
