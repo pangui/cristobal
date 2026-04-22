@@ -12,13 +12,21 @@ Desde el container `rebuss` (este) tengo acceso al `docker.sock` del host, lo qu
 ## Patrón de invocación
 
 ```bash
-sudo -n docker exec <container> sh -c 'exec "$HOME/.local/bin/claude" "$@"' -- \
+sudo -n docker exec <container> sh -c 'cd <repo_path> && exec "$HOME/.local/bin/claude" "$@"' -- \
   -p "<prompt>" --output-format json
 ```
 
-Cómo funciona: `docker exec` arranca con el `Config.User` del container y exporta su `$HOME`. El shell intermedio resuelve `$HOME` en runtime; `exec` reemplaza el proceso para no dejar un `sh` colgando; `"$@"` pasa los flags literales sin reinterpretar comillas del prompt.
+- `<repo_path>`: `/home/rebuss/counter` para counter-app; `/home/app/admin` (a confirmar) para admin-app.
 
-Así el mismo comando funciona en admin-app (`$HOME=/home/app`) y counter-app (`$HOME=/home/rebuss`) sin tabla de usuarios. Verificado el 2026-04-21.
+Cómo funciona: `docker exec` arranca con el `Config.User` del container y exporta su `$HOME`. El shell intermedio:
+1. Hace `cd` al repo custodiado para que Claude Code cargue el `.claude/settings.local.json` del proyecto (reglas de `permissions.allow` + `autoMode.allow`).
+2. Resuelve `$HOME` en runtime.
+3. `exec` reemplaza el proceso para no dejar un `sh` colgando.
+4. `"$@"` pasa los flags literales sin reinterpretar comillas del prompt.
+
+**Por qué el `cd` importa (verificado 2026-04-22):** sin él, el CWD por defecto de `docker exec` es `$HOME`, y Claude Code busca settings relativos a CWD. Si el `.claude/settings.local.json` vive en el repo (no en `$HOME/.claude/`), no se carga — las reglas bash quedan inertes y el classifier de auto mode escala cada comando. Síntoma: counter reporta "necesito autorización para git commit" aunque el settings del repo tenga `Bash(git commit:*)`.
+
+Así el mismo patrón funciona en admin-app (`$HOME=/home/app`) y counter-app (`$HOME=/home/rebuss`) sin tabla de usuarios. Verificado el 2026-04-21 (básico) y 2026-04-22 (con `cd` al repo).
 
 ## Containers disponibles
 
