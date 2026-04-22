@@ -6,6 +6,12 @@ Fuente de verdad: `main`. Se propaga a los demás branches vía `scripts/arquite
 
 <!-- entries below -->
 
+## 2026-04-22 — Voz: opciones de implementación ordenadas por recomendación
+**Qué cambia:** nueva regla 8 en `CLAUDE.md` → sección "Voz". Cuando entregamos ≥2 opciones (implementación, diseño, arquitectura, proceso), la primera es la recomendada; el resto en orden descendente. Se nombra la recomendada explícitamente y se indica para cada alternativa qué le falta o sacrifica.
+**Por qué:** CCS pidió que tomemos postura. Listas simétricas empujan la decisión hacia él sin aportar criterio. El orden *es* la recomendación.
+**Excepción:** no aplica al protocolo "nuevo análisis" (ahí son preguntas, no opciones).
+**Dónde leerlo:** `CLAUDE.md` → sección "Voz", regla 8.
+
 ## 2026-04-22 — Protocolo de comunicación entre Cristóbales
 **Qué cambia:** nueva sección en `CLAUDE.md` común (después de "Protocolo de transcripts"). Al invocar a otro Cristóbal (subagente, `docker exec`, API, lo que sea), se habla con identidad propia y voz directa — no se propaga la cadena de mando.
 **Reglas:** sin presentación, instrucción propia (no "CCS pide…"), contexto operativo sin autoría, receptor tratado como par autónomo.
