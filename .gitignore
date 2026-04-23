@@ -17,3 +17,7 @@
 
 # Transcripts en curso — solo los cerrados se versionan
 transcripts/*-running.md
+
+# Secretos sueltos (los PATs viven en ~/.secrets/gh/, nunca en el repo)
+*.key
+*.token
