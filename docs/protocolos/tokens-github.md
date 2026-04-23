@@ -15,9 +15,11 @@ Directorio 700, archivos 600. Fuera de cualquier repo.
 
 Los nombres corresponden a la **identidad del PAT** (cuenta/org), no al rol. Un rol puede usar un PAT cuyo nombre no coincide con el suyo (el arquitecto usa `pangui`), y varios roles pueden compartir el mismo PAT.
 
-## Helper: `ghas`
+## Helpers
 
-Definido en `.devcontainer/custom.zsh` (del branch `main`). Uso explícito:
+Ambos definidos en `.devcontainer/custom.zsh` (del branch `main`). Invocación explícita con el nombre del PAT → queda trazado en transcripts bajo qué identidad se ejecutó la acción. Sin estado global mutable.
+
+### `ghas` — API GitHub (vía `gh`)
 
 ```zsh
 ghas <pat-name> <args para gh>
@@ -27,7 +29,26 @@ ghas rebuss repo view org/repo
 ghas binocular issue create
 ```
 
-Resuelve `GH_TOKEN` solo para esa invocación, sin estado global mutable. El nombre del PAT aparece en cada comando → queda explícito en transcripts bajo qué identidad se ejecutó la acción.
+Resuelve `GH_TOKEN` solo para esa invocación.
+
+### `gitas` — `git` sobre HTTPS
+
+```zsh
+gitas <pat-name> <args para git>
+# ejemplos:
+gitas pangui clone https://github.com/pangui/dashboard.git
+gitas pangui push -u origin main
+gitas rebuss fetch origin
+```
+
+Inyecta credenciales vía un credential helper inline que lee el PAT desde `~/.secrets/gh/<pat-name>.token` cuando `git` las pide. Garantías:
+
+- El PAT **no queda en `.git/config`** — las URLs remotas se mantienen limpias (`https://github.com/org/repo.git` sin `x-access-token:…@`), por lo que `git push -u` persiste un `origin` sano.
+- El PAT **no aparece en argv** (el helper hace `cat` del archivo en su propio subshell, no se pasa como argumento).
+- El PAT **no entra en variables de entorno persistentes**.
+- Helpers preexistentes quedan desactivados por invocación (`credential.helper=''` antes del propio), evitando que un `store`/`cache` global capture el secreto.
+
+**No usar** `git ... https://x-access-token:${PAT}@github.com/...` directo: `git push -u` persiste esa URL con PAT embebido en `.git/config`. Si ya ocurrió, editar manualmente `.git/config` y dejar `remote = origin` con `[remote "origin"].url = https://github.com/...` limpio.
 
 ## Qué PAT me toca
 
@@ -46,4 +67,6 @@ Asignación actual:
 
 ## Alcance
 
-Los PATs son para `gh` (API GitHub: PRs, issues, releases, `gh repo clone` sobre HTTPS). Operaciones `git` sobre SSH usan la clave SSH del contenedor, no los PATs — la segmentación aquí no aplica. Si en algún momento hay que usar `git` sobre HTTPS con PAT distinto por rol, extender este protocolo con un credential helper.
+- **API GitHub** (`gh`: PRs, issues, releases, `gh repo clone` sobre HTTPS) → `ghas <pat> …`.
+- **`git` sobre HTTPS** (clone/fetch/push a URLs `https://github.com/…`) → `gitas <pat> …`.
+- **`git` sobre SSH** → clave SSH del contenedor, no usa los PATs; la segmentación por rol no aplica.
