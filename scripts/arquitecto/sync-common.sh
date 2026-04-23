@@ -23,6 +23,8 @@ COMMON_PATHS=(
   ".gitignore"
   ".claude/settings.json"
   "scripts/common/"
+  "docs/identidad/"
+  "docs/protocolos/"
 )
 
 if [ $# -lt 1 ] || [ -z "${1:-}" ]; then
