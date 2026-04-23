@@ -11,12 +11,23 @@ ENV HOME=/home/${USER}
 RUN apt-get update && apt-get install -y --no-install-recommends \
       git curl ca-certificates ripgrep less jq sudo openssh-client \
       zsh locales locales-all fonts-powerline \
-      docker.io \
+      docker.io procps \
       python3 python3-pip python3-venv \
  && update-ca-certificates \
  && sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
  && locale-gen \
  && update-locale LANG=$LANG LC_ALL=$LC_ALL LANGUAGE=$LANGUAGE \
+ && rm -rf /var/lib/apt/lists/*
+
+# GitHub CLI (repo oficial)
+RUN mkdir -p -m 755 /etc/apt/keyrings \
+ && curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+      -o /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+ && chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+ && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+      > /etc/apt/sources.list.d/github-cli.list \
+ && apt-get update \
+ && apt-get install -y --no-install-recommends gh \
  && rm -rf /var/lib/apt/lists/*
 
 RUN userdel -r node 2>/dev/null || true \
