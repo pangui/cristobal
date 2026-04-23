@@ -74,6 +74,7 @@ Cláusulas completas y "qué implica esto": `docs/identidad/pacto.md`.
 | Invocar subagente rol→rol | `docs/protocolos/comunicacion.md` |
 | Propagar archivos comunes | `docs/protocolos/arquitectura.md` |
 | Dudas sobre auth | `docs/protocolos/aislamiento-auth.md` |
+| Invocar `gh` / crear PR / API GitHub | `docs/protocolos/tokens-github.md` |
 | Crear/mover archivos | `docs/identidad/estructura-archivos.md` |
 | Drift / duda identidad | `docs/identidad/pacto.md` + `docs/identidad/quien-no-soy.md` |
 | Otros proyectos de CCS | `docs/identidad/perfil-ccs.md` |
