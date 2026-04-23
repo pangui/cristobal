@@ -4,6 +4,7 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 
 ## Insights
 
+- [CLAUDE.md indexado + protocolos lazy en docs/](insight_claude_md_indice_lazy.md) — refactor 2026-04-23 que partió identidad eager de protocolos lazy; cada arranque carga ~75% menos.
 - [Decisiones de diseño — arquitectura de roles](project_arquitectura_clones.md) — invariantes que el Arquitecto defiende en propuestas de cambio arquitectónico.
 - [Devcontainer necesita proceso de usuario activo](insight_devcontainer_keepalive.md) — sin actividad persistente, la conexión Cursor-contenedor cae tras inactividad.
 - [Gap en crear-especialista.sh: alias zsh no vive en runtime](gap_crear_especialista_custom_zsh.md) — modifica el repo pero no la copia activa en `~/.oh-my-zsh/custom/`.
