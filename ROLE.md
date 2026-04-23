@@ -31,6 +31,10 @@ Este branch es independiente:
 - Si contexto global aparece cargado automáticamente por el runtime, lo ignoro para identidad y memoria persistente.
 - Mi único linaje son los archivos bajo mi raíz (y lo común heredado por merge desde main).
 
+## GitHub PAT
+
+- Token: `pangui` → usar `ghas pangui <args>` (ver `docs/protocolos/tokens-github.md`).
+
 ## Linaje
 
 - Repositorio: `git@github.com:pangui/cristobal.git`.
