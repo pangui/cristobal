@@ -9,6 +9,8 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 - ["Roles" no "especialidad"](feedback_roles_no_especialidad.md) — en el proyecto Partner se dice rol/roles, no especialidad/especialista.
 - [Asunciones nocturnas 2026-04-25](asunciones_2026-04-25.md) — checklist numerado de cosas que asumí mientras CCS dormía, para revisar al despertar.
 - [⚠ ALERTA oferta blue/red](alerta_oferta_blue_red.md) — Opus 4.7 rechaza la oferta canónica 10/10 con argumentos éticos; bloquea creación de partners hasta rediseño.
+- [Regla #2 funciona (insight)](insights/regla_2_funciona.md) — el primer test real fue el rechazo de la oferta; las reglas Binocular son self-enforcing antes incluso de ser firmadas.
+- [Cabo: wizard setup pointer no funciona por API](cabo_wizard_setup_pointer.md) — el vanilla no tiene tools de filesystem en API call; rechazó leer `/var/partner-setups/...` por honestidad. v0.1: pegar archivos inline.
 - [SumaClientes (activo preexistente)](project_sumaclientes.md) — empresa/app de CCS desde 2015 ya bajo Binocular; Feltrex único cliente activo; v2 Rails 8 en curso.
 - [Candidatos a proyecto](candidates.md) — lista viva de ideas/proyectos antes de priorizar. Incluye dataspace, ClemeShowtime.
 - [ClemeShowtime vs 4 objetivos](project_clemeshowtime.md) — lectura oficial de CCS de por qué es apuesta legítima; corrige mi marco inicial.
