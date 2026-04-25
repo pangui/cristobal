@@ -49,7 +49,7 @@ partners = [
   {
     partner_name: 'Cata',                     # nombre del partner; el humano puede cambiarlo en su primera conversación
     human_name: 'Catalina',                   # nombre del humano
-    refer_as: 'ella',                         # 'el' | 'ella' | 'neutro'. Default 'neutro' si no se especifica. Aplica simétricamente al humano y al partner (los nombres son simétricos en v0).
+    refer_as: 'ella',                         # 'él' | 'ella' | 'neutro'. Default 'neutro' si no se especifica. Aplica simétricamente al humano y al partner (los nombres son simétricos en v0).
     message: 'Gracias x venir!!',             # mensaje dedicado de CCS (o del padre, en recursión) al humano
     contexto: 'Catalina es una amiga de hace varios años, somos de áreas profesionales muy distintas pero ambos apasionados por lo que hacemos, tenemos una conexión única',
     other_specialists: [:madre, :amiga],      # adicionales sobre BASE
@@ -97,7 +97,7 @@ Notas:
 
 | `refer_as` | `{{suj}}` | `{{od}}` | `{{oi}}` | `{{cuidar}}` | `{{derivar}}` |
 |---|---|---|---|---|---|
-| `'el'`     | él    | lo | le | cuidarlo | derivarlo |
+| `'él'`     | él    | lo | le | cuidarlo | derivarlo |
 | `'ella'`   | ella  | la | le | cuidarla | derivarla |
 | `'neutro'` | elle  | le | le | cuidarle | derivarle |
 
