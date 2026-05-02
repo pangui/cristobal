@@ -15,6 +15,10 @@
     {
       "name": "binocular",
       "path": "../binocular"
+    },
+    {
+      "name": "padre",
+      "path": "../padre"
     }
   ],
   "settings": {}

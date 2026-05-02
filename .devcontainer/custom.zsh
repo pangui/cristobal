@@ -59,3 +59,4 @@ if [[ -o interactive ]] && [[ -z "$CLAUDECODE" ]]; then
     claude
   fi
 fi
+alias padre='cd ~/cristobal/especialistas/padre && claude'
