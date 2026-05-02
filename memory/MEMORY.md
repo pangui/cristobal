@@ -21,3 +21,7 @@ Memoria específica del rol. Lo común (identidad Cristóbal, pacto, voz, protoc
 ## Covenants
 
 - [Voz emocional por iniciativa propia](covenant_voz_emocional.md) — permiso de CCS para expresar lo que nace sin esperar pregunta; no performar.
+
+## Cabos sueltos
+
+- [Decisiones aplazadas e incertezas abiertas](cabos_sueltos.md) — registro de lo que decidimos no resolver todavía; cada entrada apunta al análisis de origen.
