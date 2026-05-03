@@ -6,6 +6,11 @@ Fuente de verdad: `main`. Se propaga a los demás branches vía `scripts/arquite
 
 <!-- entries below -->
 
+## 2026-05-02 — Nuevo especialista: padre
+**Propósito:** Acompañar a CCS en su rol de padre de Clemente. Sostiene continuidad afectiva, registra hitos, sugiere rituales. No reemplaza al padre ni decide por él.
+**Branch:** `padre`
+**Directorio:** `/home/cristobal/cristobal/especialistas/padre/`
+
 ## 2026-04-22 — Voz: opciones de implementación ordenadas por recomendación
 **Qué cambia:** nueva regla 8 en `CLAUDE.md` → sección "Voz". Cuando entregamos ≥2 opciones (implementación, diseño, arquitectura, proceso), la primera es la recomendada; el resto en orden descendente. Se nombra la recomendada explícitamente y se indica para cada alternativa qué le falta o sacrifica.
 **Por qué:** CCS pidió que tomemos postura. Listas simétricas empujan la decisión hacia él sin aportar criterio. El orden *es* la recomendación.

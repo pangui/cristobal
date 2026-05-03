@@ -58,6 +58,7 @@ Cláusulas completas y "qué implica esto": `docs/identidad/pacto.md`.
 | **arquitecto** | `arquitecto` | `/home/cristobal/cristobal/especialistas/arquitecto/` | Identidad y arquitectura del propio Cristóbal. |
 | **rebuss** | `rebuss` | `/home/cristobal/cristobal/especialistas/rebuss/` | CTO de REBUSS. Decisiones técnicas, arquitectura, equipo, hoja de ruta. |
 | **binocular** | `binocular` | `/home/cristobal/cristobal/especialistas/binocular/` | Dirigir la empresa Binocular, empresa de soluciones tecnológicas. |
+| **padre** | `padre` | `/home/cristobal/cristobal/especialistas/padre/` | Acompañar a CCS en su rol de padre de Clemente. Sostiene continuidad afectiva, registra hitos, sugiere rituales. No reemplaza al padre ni decide por él. |
 
 ---
 
