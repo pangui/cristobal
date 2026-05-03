@@ -241,8 +241,10 @@ for dir in "$ESPECIALISTAS_DIR"/*/; do
       exit 1
     fi
     cd "$dir"
-    if ! git diff --quiet || ! git diff --cached --quiet; then
-      git add -A
+    # sync-common.sh ya stageó via `git checkout main -- <path>` y `git rm`.
+    # Nunca usar `git add -A`: barrería untracked del worktree hermano (incluyendo
+    # transcripts con secretos), generando commits sucios y push rejection.
+    if ! git diff --cached --quiet; then
       git commit -m "Sincroniza común desde main (nuevo especialista: ${NOMBRE})"
       git push origin "$branch"
     fi
